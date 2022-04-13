@@ -10,6 +10,7 @@ declare module 'styled-components' {
     common: CommonOptions;
     primary: PaletteOptions;
     secondary: PaletteOptions;
+    error: PaletteOptions;
     text: TextOptions;
   }
 
@@ -52,10 +53,16 @@ export const theme: DefaultTheme = {
       light: '#42a5f5',
       dark: '#1565c0'
     },
+
     secondary: {
       main: '#9c27b0',
       light: '#ba68c8',
       dark: '#7b1fa2'
+    },
+    error: {
+      main: '#d32f2f',
+      light: '#ef5350',
+      dark: '#c62828'
     },
     text: {
       primary: 'rgba(0,0,0,0.87)',

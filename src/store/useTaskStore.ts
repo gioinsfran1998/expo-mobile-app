@@ -2,22 +2,24 @@ import create from 'zustand';
 
 export const useTaskStore = create((set) => ({
   values: {
-    name: '',
-    mierda: ''
+    firstName: '',
+    lastName: '',
+    location: '',
+    task: '',
+    priority: ''
   },
-  // setValues: (key, value) =>
-  //   set((state)=>{
-  //     values: {
-  //       ...state.values,
-  //       [key]: value
-  //     }
-  //   })
-
-  setValues: (key, value) =>
+  setValue: (key, value) =>
     set((state) => ({
       values: {
-        ...state,
+        ...state.values,
         [key]: value
+      }
+    })),
+  setValues: (value) =>
+    set((state) => ({
+      values: {
+        ...state.values,
+        ...value
       }
     }))
 }));

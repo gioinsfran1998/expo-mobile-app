@@ -8,22 +8,13 @@ export const Wrapper = styled.View`
   min-height: 100%;
 `;
 
-export const Input = styled.TextInput`
+export const TextArea = styled.TextInput`
   background-color: ${({ theme }) => theme.palette.common.white};
   padding: 10px;
   border-radius: 5px;
+  height: 100px;
 
   color: ${({ theme }) => theme.palette.secondary.dark};
-`;
-
-export const InputTitle = styled.Text`
-  color: ${({ theme }) => theme.palette.common.white};
-  font-family: ${({ theme }) => theme.typography.mediumItalic};
-`;
-
-export const Error = styled.Text`
-  font-family: ${({ theme }) => theme.typography.bold};
-  color: ${({ theme }) => theme.palette.error.light};
 `;
 
 export const Description = styled.Text`
@@ -38,7 +29,11 @@ export const Description = styled.Text`
   text-align: center;
 `;
 
-export const GroupInput = styled.View`
-  margin-bottom: 10px;
-  height: 72px;
+export const Overlay = styled.View`
+  height: 100%;
+  justify-content: flex-end;
+`;
+
+export const ModalWrapper = styled.View`
+  background-color: rgba(0, 0, 0, 0.15);
 `;
