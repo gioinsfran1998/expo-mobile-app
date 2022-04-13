@@ -1,0 +1,8 @@
+node_modules/
+babel.config.js
+metro.config.js
+!.jest
+node_modules
+dist
+node_modules/
+*js
