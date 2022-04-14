@@ -9,6 +9,7 @@ interface InputProps {
   name: string;
   control: any;
   placeholder?: string;
+  type: 'TextArea' | 'Default';
 }
 
 const Input: FC<InputProps> = ({
@@ -16,17 +17,21 @@ const Input: FC<InputProps> = ({
   label,
   control,
   placeholder,
-  error
+  error,
+  type
 }) => {
   const { field } = useController({
     control,
     defaultValue: '',
-    name
+    name,
+    type
   });
   return (
     <S.GroupInput>
       {!!label && <S.InputTitle>{label}</S.InputTitle>}
       <S.Input
+        type={type}
+        multiline={type === 'TextArea'}
         onBlur={field.onBlur}
         placeholder={placeholder}
         onChangeText={field.onChange}

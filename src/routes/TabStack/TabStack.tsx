@@ -30,6 +30,7 @@ const TabStack = () => {
       />
       <Tab.Screen
         name='Tasks'
+        component={Tasks}
         options={{
           title: 'Tasks',
 
@@ -38,7 +39,6 @@ const TabStack = () => {
             <FontAwesome name='tasks' size={size} color={color} />
           )
         }}
-        component={Tasks}
       />
     </Tab.Navigator>
   );

@@ -1,9 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import Form from '../pages/App/Form/Form';
-import Priority from '../pages/App/Form/Priority/Priority';
-import Task from '../pages/App/Form/Task/Task';
+
+import CreateStack from './CreateStack/CreateStack';
 import TabStack from './TabStack/TabStack';
 
 const Stack = createNativeStackNavigator();
@@ -20,29 +19,15 @@ const Navigation = (): JSX.Element => {
           component={TabStack}
           name='TabStack'
         />
+
         <Stack.Screen
           options={{
             gestureEnabled: true,
-            title: 'Task'
+            title: 'CreateStack',
+            headerShown: false
           }}
-          component={Task}
-          name='Task'
-        />
-        <Stack.Screen
-          options={{
-            gestureEnabled: true,
-            title: 'Form'
-          }}
-          component={Form}
-          name='Form'
-        />
-        <Stack.Screen
-          options={{
-            gestureEnabled: true,
-            title: 'Priority'
-          }}
-          component={Priority}
-          name='Priority'
+          component={CreateStack}
+          name='CreateStack'
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -27,6 +27,14 @@ export const ArrowRight = styled(FontAwesome).attrs(({ theme }) => {
   };
 })``;
 
+export const ArrowLeft = styled(FontAwesome).attrs(({ theme }) => {
+  return {
+    name: 'arrow-left',
+    size: 24,
+    color: theme.palette.common.black
+  };
+})``;
+
 export const Title = styled.Text`
   color: ${({ theme }) => theme.palette.common.black};
   font-family: ${({ theme }) => theme.typography.mediumItalic};

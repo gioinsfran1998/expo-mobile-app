@@ -6,7 +6,7 @@ import * as S from './style';
 const Tasks = ({ navigation }) => {
   return (
     <S.Wrapper>
-      <S.ButtonWrapper onPress={() => navigation.navigate('Form')}>
+      <S.ButtonWrapper onPress={() => navigation.navigate('CreateStack')}>
         <S.TextButton>Create Task</S.TextButton>
       </S.ButtonWrapper>
     </S.Wrapper>

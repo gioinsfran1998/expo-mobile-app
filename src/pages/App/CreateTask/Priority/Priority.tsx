@@ -1,33 +1,43 @@
+import React, { useState } from 'react';
+
 import { yupResolver } from '@hookform/resolvers/yup';
-import React, { useEffect, useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
-import Button from '../../../../components/shared/Button/Button';
-import * as S from './style';
-import { schema } from '../schema';
+import { Controller, useForm, useFormContext } from 'react-hook-form';
 import { Picker } from '@react-native-picker/picker';
-import { Alert, Modal, View } from 'react-native';
+import { Alert, Modal, Text } from 'react-native';
+import { useTaskStore } from '../../../../store/useTaskStore';
+
+import NavigationBar from '../../../../components/shared/NavigationBar/NavigationBar';
+import Button from '../../../../components/shared/Button/Button';
+import * as Yup from 'yup';
+
+import * as S from './style';
+
+const schema = Yup.object().shape({
+  priority: Yup.string().required('*Priority cannot be empty')
+});
 
 const Priority = ({ navigation }) => {
-  const [value, setValues] = useState({});
-  const [importance, setImportance] = useState();
   const [modalVisible, setModalVisible] = useState(false);
 
-  const {
-    control,
-    trigger,
-    setValue,
-    formState: { errors }
-  } = useForm({
-    resolver: yupResolver(schema),
-    mode: 'onBlur'
-  });
+  const { watch, getValues, control, trigger, setValue } = useFormContext();
 
-  const handleSubmit = (data) => {
-    console.log('Task', data);
+  const saveFormToRight = () => {
+    trigger();
+    navigation.navigate('Extra');
+  };
+
+  const saveFormToLeft = () => {
+    trigger();
+    navigation.goBack();
   };
 
   return (
     <S.Wrapper>
+      <NavigationBar
+        title='Go to Extra'
+        onPressRight={saveFormToRight}
+        onPressLeft={saveFormToLeft}
+      />
       <S.Description>Enter task priority</S.Description>
 
       <Modal
@@ -49,10 +59,9 @@ const Priority = ({ navigation }) => {
                   itemStyle={{
                     color: '#fafafa'
                   }}
-                  selectedValue={importance}
+                  selectedValue={getValues().priority}
                   onValueChange={(itemValue) => {
-                    setValue('importance', itemValue);
-                    setImportance(itemValue);
+                    setValue('priority', itemValue);
                     setModalVisible((prev) => !prev);
                   }}
                 >
@@ -68,7 +77,10 @@ const Priority = ({ navigation }) => {
       </Modal>
 
       <Button title='Select' onPress={() => setModalVisible((prev) => !prev)} />
-      <Button title='Submit' mt={50} onPress={handleSubmit} />
+
+      <Text style={{ padding: 10, color: '#fafafa' }}>
+        {JSON.stringify(getValues(), null, 2)}
+      </Text>
     </S.Wrapper>
   );
 };

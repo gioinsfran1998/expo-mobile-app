@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const GroupInput = styled.View`
   margin-bottom: 10px;
-  height: 72px;
+  min-height: 72px;
 `;
 
 export const InputTitle = styled.Text`
@@ -16,6 +16,8 @@ export const Input = styled.TextInput`
   border-radius: 5px;
 
   color: ${({ theme }) => theme.palette.secondary.dark};
+
+  ${({ type }) => type === 'TextArea' && 'height: 100px'}
 `;
 
 export const Error = styled.Text`

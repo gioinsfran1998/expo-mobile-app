@@ -4,18 +4,29 @@ import * as S from './style';
 
 interface NavigationBarProps {
   title: String;
-  onPress: () => void;
+  onPressRight: () => void;
+  onPressLeft?: () => void;
 }
 const NavigationBar: FC<NavigationBarProps> = ({
   title = 'Title',
-  onPress
+  onPressLeft,
+  onPressRight
 }) => {
   return (
     <S.Header>
+      {!!onPressLeft && (
+        <S.TouchableArrow onPress={onPressLeft}>
+          <S.ArrowLeft />
+        </S.TouchableArrow>
+      )}
+
       <S.Title>{title}</S.Title>
-      <S.TouchableArrow onPress={onPress}>
-        <S.ArrowRight />
-      </S.TouchableArrow>
+
+      {!!onPressRight && (
+        <S.TouchableArrow onPress={onPressRight}>
+          <S.ArrowRight />
+        </S.TouchableArrow>
+      )}
     </S.Header>
   );
 };
