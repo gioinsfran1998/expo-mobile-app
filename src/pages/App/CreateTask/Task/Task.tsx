@@ -16,16 +16,16 @@ const Task = ({ navigation }) => {
     watch,
     getValues,
     control,
-    trigger,
-    formState: { errors }
+    formState: { errors },
+    trigger
   } = useFormContext();
 
   const saveFormToRight = () => {
     navigation.navigate('Priority');
+    trigger('task');
   };
 
   const saveFormToLeft = () => {
-    trigger();
     navigation.goBack();
   };
 

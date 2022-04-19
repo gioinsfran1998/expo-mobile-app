@@ -1,18 +1,15 @@
 import React from 'react';
 
-import { useForm, Controller, useFormContext } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import { Text } from 'react-native';
-import { useTaskStore } from '../../../../store/useTaskStore';
 
 import NavigationBar from '../../../../components/shared/NavigationBar/NavigationBar';
 import Input from '../../../../components/shared/Input/Input';
-import * as Yup from 'yup';
 
 import * as S from './style';
 
 const User = ({ navigation }) => {
   const {
-    watch,
     getValues,
     control,
     trigger,
@@ -20,8 +17,8 @@ const User = ({ navigation }) => {
   } = useFormContext();
 
   const saveForm = () => {
-    trigger();
     navigation.navigate('Task');
+    trigger(['firstName', 'lastName']);
   };
 
   return (
@@ -49,15 +46,6 @@ const User = ({ navigation }) => {
         label='Last Name:'
         control={control}
         error={errors.lastName?.message}
-      />
-
-      <Input
-        type='Default'
-        placeholder='Ingress Location'
-        name='location'
-        label='Location:'
-        control={control}
-        error={errors.location?.message}
       />
 
       <Text style={{ padding: 10, color: '#fafafa' }}>

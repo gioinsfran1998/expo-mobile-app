@@ -12,6 +12,12 @@ declare module 'styled-components' {
     secondary: PaletteOptions;
     error: PaletteOptions;
     text: TextOptions;
+    background: Background;
+  }
+
+  export interface Background {
+    paper: string;
+    default: string;
   }
 
   export interface PaletteOptions {
@@ -68,6 +74,10 @@ export const theme: DefaultTheme = {
       primary: 'rgba(0,0,0,0.87)',
       secondary: 'rgba(0,0,0,0.6)',
       disabled: 'rgba(0,0,0,0.38)'
+    },
+    background: {
+      default: '#ffffff',
+      paper: '#f7f1e1'
     }
   },
   typography: {

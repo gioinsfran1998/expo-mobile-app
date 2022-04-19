@@ -1,15 +1,24 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { Text, View } from 'react-native';
+import Button from '../../../components/shared/Button/Button';
 
+import { Wrapper, Scrollable, Description, Title, Content } from '../style';
 import * as S from './style';
 
 const Tasks = ({ navigation }) => {
   return (
-    <S.Wrapper>
-      <S.ButtonWrapper onPress={() => navigation.navigate('CreateStack')}>
-        <S.TextButton>Create Task</S.TextButton>
-      </S.ButtonWrapper>
-    </S.Wrapper>
+    <Wrapper>
+      <Scrollable>
+        <Title>Create Task</Title>
+        <Description>Description create tas</Description>
+
+        <Button
+          mt={20}
+          title='Create Task'
+          onPress={() => navigation.navigate('CreateStack')}
+        />
+      </Scrollable>
+    </Wrapper>
   );
 };
 

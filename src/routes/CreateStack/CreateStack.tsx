@@ -8,23 +8,35 @@ import Task from '../../pages/App/CreateTask/Task/Task';
 import User from '../../pages/App/CreateTask/User/User';
 import Priority from '../../pages/App/CreateTask/Priority/Priority';
 import Extra from '../../pages/App/CreateTask/Extra/Extra';
+import Phone from '../../pages/App/CreateTask/Phone/Phone';
+import Address from '../../pages/App/CreateTask/Address/Address';
+import SocialMedia from '../../pages/App/CreateTask/SocialMedia/SocialMedia';
 
 import * as Yup from 'yup';
+import Gender from '../../pages/App/CreateTask/Gender/Gender';
+import Measures from '../../pages/App/CreateTask/Measures/Measures';
+import { schema } from './schema';
+import Errors from '../../pages/App/CreateTask/Errors/Errors';
 
 const Stack = createNativeStackNavigator();
 
-const schema = Yup.object().shape({
-  firstName: Yup.string().required('*First Name cannot be empty'),
-  lastName: Yup.string().required('*Last Name cannot be empty'),
-  location: Yup.string().required('*Location cannot be empty'),
-  task: Yup.string().required('*Task cannot be empty')
-});
 const initialValues = {
   firstName: '',
   lastName: '',
-  location: '',
   task: '',
-  priority: 'low'
+  priority: 'low',
+  color: 'red',
+  phoneNumber: '',
+  documentNumber: '',
+  country: '',
+  city: '',
+  address: '',
+  twitter: '',
+  instagram: '',
+  facebook: '',
+  gender: '',
+  height: '',
+  weight: ''
 };
 
 const CreateStack = () => {
@@ -68,6 +80,54 @@ const CreateStack = () => {
           }}
           component={Extra}
           name='Extra'
+        />
+        <Stack.Screen
+          options={{
+            gestureEnabled: true,
+            title: 'Phone'
+          }}
+          component={Phone}
+          name='Phone'
+        />
+        <Stack.Screen
+          options={{
+            gestureEnabled: true,
+            title: 'Address'
+          }}
+          component={Address}
+          name='Address'
+        />
+        <Stack.Screen
+          options={{
+            gestureEnabled: true,
+            title: 'SocialMedia'
+          }}
+          component={SocialMedia}
+          name='SocialMedia'
+        />
+        <Stack.Screen
+          options={{
+            gestureEnabled: true,
+            title: 'Gender'
+          }}
+          component={Gender}
+          name='Gender'
+        />
+        <Stack.Screen
+          options={{
+            gestureEnabled: true,
+            title: 'Measures'
+          }}
+          component={Measures}
+          name='Measures'
+        />
+        <Stack.Screen
+          options={{
+            gestureEnabled: true,
+            title: 'Errors'
+          }}
+          component={Errors}
+          name='Errors'
         />
       </Stack.Navigator>
     </FormProvider>

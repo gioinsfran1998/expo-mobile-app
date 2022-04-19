@@ -12,22 +12,17 @@ import * as Yup from 'yup';
 
 import * as S from './style';
 
-const schema = Yup.object().shape({
-  priority: Yup.string().required('*Priority cannot be empty')
-});
-
 const Priority = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
-  const { watch, getValues, control, trigger, setValue } = useFormContext();
+  const { getValues, control, setValue, trigger } = useFormContext();
 
   const saveFormToRight = () => {
-    trigger();
     navigation.navigate('Extra');
+    trigger('priority');
   };
 
   const saveFormToLeft = () => {
-    trigger();
     navigation.goBack();
   };
 

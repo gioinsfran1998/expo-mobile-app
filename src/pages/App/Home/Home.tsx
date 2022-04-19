@@ -1,11 +1,16 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
+
+import { Wrapper, Scrollable } from '../style';
+import * as S from './style';
 
 const Home = () => {
   return (
-    <View>
-      <Text>Home</Text>
-    </View>
+    <Wrapper>
+      <Scrollable>
+        <Text>Home</Text>
+      </Scrollable>
+    </Wrapper>
   );
 };
 

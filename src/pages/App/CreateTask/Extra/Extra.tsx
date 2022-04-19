@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Controller, useForm, useFormContext } from 'react-hook-form';
 import { Text } from 'react-native';
+import NumberFormat from 'react-number-format';
 import Button from '../../../../components/shared/Button/Button';
 import NavigationBar from '../../../../components/shared/NavigationBar/NavigationBar';
 import SelectColor from '../../../../components/shared/SelectColor/SelectColor';
@@ -9,7 +10,7 @@ import * as S from './style';
 
 const dataColor = [
   {
-    color: '#fafafa',
+    color: '#ff0000',
     value: 'red'
   },
   {
@@ -41,7 +42,7 @@ const dataColor = [
 const Extra = ({ navigation }) => {
   const [colorTask, setColorTask] = useState('red');
 
-  const { watch, getValues, setValue, control, trigger } = useFormContext();
+  const { getValues, setValue, control, trigger } = useFormContext();
 
   const handleSelect = (value) => {
     setColorTask(value);
@@ -49,12 +50,11 @@ const Extra = ({ navigation }) => {
   };
 
   const saveFormToRight = () => {
-    trigger();
-    navigation.navigate('Extra');
+    navigation.navigate('Phone');
+    trigger('color');
   };
 
   const saveFormToLeft = () => {
-    trigger();
     navigation.goBack();
   };
 
@@ -78,10 +78,15 @@ const Extra = ({ navigation }) => {
         name='color'
       />
 
+      {getValues().color !== '' && (
+        <S.Color color={getValues().color}>
+          <S.ColorText>{getValues().color}</S.ColorText>
+        </S.Color>
+      )}
+
       <Text style={{ padding: 10, color: '#fafafa' }}>
         {JSON.stringify(getValues(), null, 2)}
       </Text>
-      <Button title='Submit' mt={50} onPress={() => console.log('loog')} />
     </S.Wrapper>
   );
 };

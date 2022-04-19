@@ -14,7 +14,8 @@ const TabStack = () => {
     <Tab.Navigator
       initialRouteName='home'
       screenOptions={{
-        tabBarActiveTintColor: theme.palette.primary.light
+        tabBarActiveTintColor: theme.palette.primary.light,
+        headerShown: false
       }}
     >
       <Tab.Screen
@@ -33,7 +34,6 @@ const TabStack = () => {
         component={Tasks}
         options={{
           title: 'Tasks',
-
           tabBarLabel: 'Tasks',
           tabBarIcon: ({ color, size }) => (
             <FontAwesome name='tasks' size={size} color={color} />

@@ -1,11 +1,11 @@
 import styled from 'styled-components/native';
 
-export const Wrapper = styled.View`
+export const Wrapper = styled.SafeAreaView`
   padding: 20px;
 
   background-color: ${({ theme }) => theme.palette.primary.main};
 
-  min-height: 100%;
+  flex: 1;
 `;
 
 export const ButtonWrapper = styled.TouchableOpacity`
